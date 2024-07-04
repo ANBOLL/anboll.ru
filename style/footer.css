@@ -1,0 +1,31 @@
+footer {
+    margin-top: auto;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-orange);
+}
+
+/* ADAPTIVE */
+
+/* min style */
+@media (max-width: 768px) {
+    footer {
+        height: 80px;
+    }
+}
+
+/* middle style */
+@media (min-width: 769px) and (max-width: 1200px) {
+    footer {
+        height: 100px;
+    }
+}
+
+/* big style */
+@media (min-width: 1201px) and (max-width: 1600px) {
+    footer {
+        height: 130px;
+    }
+}
