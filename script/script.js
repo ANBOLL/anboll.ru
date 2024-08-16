@@ -205,9 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 let tempFlagTime = false;
                 if (!tempFlagTime) {
                     tempFlagTime = true;
-                    setTimeout(() => {
-                        alert("Перезагрузи страницу, пробуй заново, сервера хомяка дали заднюю..")
-                    }, 300000);
+                    // setTimeout(() => {
+                    //     alert("Перезагрузи страницу, пробуй заново, сервера хомяка дали заднюю..")
+                    // }, 300000);
                 }
                 if (hasCode) {
                     break;
