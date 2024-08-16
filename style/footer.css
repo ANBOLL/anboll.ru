@@ -1,10 +1,51 @@
 footer {
     margin-top: auto;
-    height: 150px;
+    height: 110px;
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: var(--color-orange);
+    background-color: var(--color-gray);
+}
+
+.social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-tg,
+.social-vk,
+.social-youTube-fake {
+    width: 70px;
+    height: 50px;
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--color-white);
+    transition: all 0.3s;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.social-tg {
+    mask-image: url("/images/icons/telegram.svg");
+}
+
+.social-vk {
+    mask-image: url("/images/icons/vk.svg");
+}
+
+.social-youTube-fake {
+    mask-image: url("/images/icons/youtube.svg");
+}
+
+.social-tg:hover,
+.social-vk:hover,
+.social-youTube-fake:hover {
+    background-color: var(--color-black);
 }
 
 /* ADAPTIVE */
@@ -19,13 +60,13 @@ footer {
 /* middle style */
 @media (min-width: 769px) and (max-width: 1200px) {
     footer {
-        height: 100px;
+        height: 90px;
     }
 }
 
 /* big style */
 @media (min-width: 1201px) and (max-width: 1600px) {
     footer {
-        height: 130px;
+        height: 100px;
     }
 }

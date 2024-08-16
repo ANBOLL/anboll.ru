@@ -1,0 +1,171 @@
+.container {
+  background: var(--color-light-gray);
+  border-radius: 8px;
+  box-shadow: 0 5px 10px var(--color-black);
+  padding: 20px;
+  max-width: 500px;
+  height: max-content;
+  text-align: center;
+  margin: 60px auto;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.c-button {
+    margin: 30px auto 20px;
+}
+
+.key-item .c-button {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.progress-bar {
+  background-color: var(--color-white);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 20px;
+  height: 30px;
+  position: relative;
+}
+
+.progress-bar div {
+  height: 100%;
+  background-color: var(--color-green);
+  width: 0;
+  transition: width 0.5s;
+}
+
+#progressText {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.key-item {
+  display: flex;
+  align-items: start;
+  margin-top: 10px;
+}
+
+.key-item input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.copyKeyBtn {
+  background-color: var(--color-green);
+  border: none;
+  padding: 10px 20px;
+  color: var(--color-white);
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.copyKeyBtn:hover {
+  background-color: var(--color-green);
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+#copyStatus {
+  margin-top: 10px;
+  color: var(--color-green);
+}
+
+.custom-select {
+    position: relative;
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+  }
+  
+  .custom-select select {
+    display: none;
+  }
+  
+  .select-selected {
+    background-color: var(--color-gray);
+  }
+  
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: var(--color-white) transparent transparent transparent;
+  }
+  
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent var(--color-white) transparent;
+    top: 7px;
+  }
+  
+  .select-items div,.select-selected {
+    color: var(--color-white);
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-color: transparent transparent var(--color-black) transparent;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+  }
+
+  .select-items div {
+    border-radius: 10px;
+  }
+  
+  .select-items {
+    position: absolute;
+    background-color: var(--color-gray);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-radius: 10px;
+  }
+  
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected, .select-selected:hover {
+    background-color: var(--color-black);
+  }
+  
