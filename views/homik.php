@@ -4,7 +4,7 @@ $code = "Index";
 include_once("views/header.php");
 ?>
 <link rel="stylesheet" href="/style/homik/style.css">
-<script src="/script/homik/script.js"></script>
+<script src="/script/homik/scriptHomik.js"></script>
 <script src="/script/homik/scriptSelect.js"></script>
 <div class="l-container">
 <div class="container">
@@ -12,16 +12,6 @@ include_once("views/header.php");
         <h1 class="second-title hidden">Немного терпения, ты же веришь в листинг хомяка... 🐹</h1>
         <div class="form-group">
             <label class="gameSelect-label" for="gameSelect">Выбери игру для генерации ключей:</label>
-            <!--
-            <select id="gameSelect">
-                <option value="1">Bike Ride 3D</option>
-                <option value="2">Chain Cube 2048</option>
-                <option value="3">My Clone Army</option>
-                <option value="4">Train Miner</option>
-                <option value="5">Merge Away <sup>(new)</sup></option>
-                <option value="6" selected>Twerk Race <sup>(new)</sup></option>
-            </select>
-            -->
             <div class="custom-select" >
                 <select id="gameSelect">
                     <option value="1">Bike Ride 3D</option>
