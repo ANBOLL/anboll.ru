@@ -6,7 +6,7 @@
   max-width: 500px;
   height: max-content;
   text-align: center;
-  margin: 60px auto;
+  margin: 120px auto;
   display: block;
   height: 100%;
   width: 100%;
@@ -34,7 +34,7 @@ select {
 }
 
 .c-button {
-    margin: 30px auto 20px;
+  margin: 30px auto 20px;
 }
 
 .key-item .c-button {
@@ -52,6 +52,7 @@ select {
   margin-top: 20px;
   height: 30px;
   position: relative;
+  width: 100%;
 }
 
 .progress-bar div {
@@ -106,66 +107,84 @@ select {
 }
 
 .custom-select {
-    position: relative;
-    width: 70%;
-    margin: auto;
-    margin-top: 10px;
-  }
-  
-  .custom-select select {
-    display: none;
-  }
-  
-  .select-selected {
-    background-color: var(--color-gray);
-  }
-  
-  .select-selected:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: var(--color-white) transparent transparent transparent;
-  }
-  
-  .select-selected.select-arrow-active:after {
-    border-color: transparent transparent var(--color-white) transparent;
-    top: 7px;
-  }
-  
-  .select-items div,.select-selected {
-    color: var(--color-white);
-    padding: 10px 20px;
-    border: 1px solid transparent;
-    border-color: transparent transparent var(--color-black) transparent;
-    cursor: pointer;
-    user-select: none;
-    border-radius: 10px;
-    transition: all 0.3s;
-  }
+  position: relative;
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+}
 
-  .select-items div {
-    border-radius: 10px;
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: var(--color-gray);
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: var(--color-white) transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent var(--color-white) transparent;
+  top: 7px;
+}
+
+.select-items div,
+.select-selected {
+  color: var(--color-white);
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-color: transparent transparent var(--color-black) transparent;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.select-items div {
+  border-radius: 10px;
+}
+
+.select-items {
+  position: absolute;
+  background-color: var(--color-gray);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 10px;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected,
+.select-selected:hover {
+  background-color: var(--color-black);
+}
+
+/* ADAPTIVE */
+
+/* min style */
+@media (max-width: 768px) {
+  .container {
+    margin: 30px auto;
   }
-  
-  .select-items {
-    position: absolute;
-    background-color: var(--color-gray);
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    border-radius: 10px;
+}
+
+/* big style */
+@media (min-width: 1201px) and (max-width: 1600px) {
+  .container {
+    margin: 50px auto;
   }
-  
-  .select-hide {
-    display: none;
-  }
-  
-  .select-items div:hover, .same-as-selected, .select-selected:hover {
-    background-color: var(--color-black);
-  }
-  
+}

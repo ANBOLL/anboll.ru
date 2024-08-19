@@ -6,19 +6,46 @@
     <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <link type="image/x-icon" href="/images/site/favicon.ico" rel="shortcut icon">
+    <link type="image/x-icon" href="/public/images/site/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="/style/config.css">
     <link rel="stylesheet" href="/style/header.css">
     <link rel="stylesheet" href="/style/footer.css">
+    <script src="/script/header/script.js"></script>
+    <script src="/script/footer/script.js"></script>
     <?php if(isset($data["style"])) {?>
-        <link rel="stylesheet" href="<?=$data["style"] ? $data["style"] : ''?>"> 
+    <link rel="stylesheet" href="<?=$data["style"] ? $data["style"] : ''?>">
     <?php } ?>
-    <title>ANBOLL</title>
+    <?php 
+        $offset = $offset ?? true;
+        $script_data = $script_data ?? "";
+        $style_data = $style_data ?? "";
+
+        if($style_data !== "") {
+            foreach ($style_data as $value_style) {
+                echo "<link rel=\"stylesheet\" href=\"/style" . $value_style . "\">";
+            }
+        }
+        if($script_data !== "") {
+            foreach ($script_data as $value_script) {
+                echo "<script src=\"/script" . $value_script . "\"></script>";
+            }
+        }
+    ?>
+    <title><?= $title_meta = $title_meta ?? "ANBOLL" ?></title>
 </head>
+
 <body>
-<header>
-    <div class="l-container">
-        <a href="/" class="logo"></a>
-    </div>
-</header>
-<main>
+    <header class="<?= $offset ? 'offset' : ''?>">
+        <div class="header-wrapper">
+            <div class="header-content">
+                <div class="l-container">
+                    <?php if ($_SERVER['REQUEST_URI'] != '/') {?>
+                        <a href="/" class="logo-link"></a>
+                    <?php } else {?>
+                        <div href="/" class="logo"></div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>

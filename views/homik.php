@@ -1,13 +1,19 @@
 <?php
 session_start();
 $code = "Index";
+$title_meta = "Hamster Kombat";
+$style_data = [
+    "/homik/style.css",
+];
+
+$script_data = [
+    "/homik/scriptHomik.js",
+    "/homik/scriptSelect.js",
+];
 include_once("views/header.php");
 ?>
-<link rel="stylesheet" href="/style/homik/style.css">
-<script src="/script/homik/scriptHomik.js"></script>
-<script src="/script/homik/scriptSelect.js"></script>
 <div class="l-container">
-<div class="container">
+    <div class="container">
         <h1 class="main-title">Кароч, ключи для хомяка тута 👇</h1>
         <h1 class="second-title hidden">Немного терпения, ты же веришь в листинг хомяка... 🐹</h1>
         <div class="form-group">

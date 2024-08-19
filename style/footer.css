@@ -1,72 +1,84 @@
 footer {
-    margin-top: auto;
-    height: 110px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: var(--color-gray);
+  margin-top: auto;
+  height: 110px;
+  width: 100%;
+  background-color: var(--color-gray);
 }
 
 .social-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .social-tg,
 .social-vk,
 .social-youTube-fake {
-    width: 70px;
-    height: 50px;
-    mask-size: cover;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    background-color: var(--color-white);
-    transition: all 0.3s;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    border-radius: 10px;
+  width: 70px;
+  height: 50px;
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: var(--color-white);
+  transition: all 0.3s;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  border-radius: 10px;
 }
 
 .social-tg {
-    mask-image: url("/images/icons/telegram.svg");
+  mask-image: url("/public/images/icons/telegram.svg");
 }
 
 .social-vk {
-    mask-image: url("/images/icons/vk.svg");
+  mask-image: url("/public/images/icons/vk.svg");
 }
 
 .social-youTube-fake {
-    mask-image: url("/images/icons/youtube.svg");
+  mask-image: url("/public/images/icons/youtube.svg");
 }
 
 .social-tg:hover,
 .social-vk:hover,
 .social-youTube-fake:hover {
-    background-color: var(--color-black);
+  background-color: var(--color-black);
+}
+
+.wrapper-footer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ADAPTIVE */
 
 /* min style */
 @media (max-width: 768px) {
-    footer {
-        height: 80px;
-    }
+  footer {
+    height: 80px;
+  }
+
+  .social-tg,
+  .social-vk,
+  .social-youTube-fake {
+    width: 50px;
+    height: 40px;
+  }
 }
 
 /* middle style */
 @media (min-width: 769px) and (max-width: 1200px) {
-    footer {
-        height: 90px;
-    }
+  footer {
+    height: 90px;
+  }
 }
 
 /* big style */
 @media (min-width: 1201px) and (max-width: 1600px) {
-    footer {
-        height: 100px;
-    }
+  footer {
+    height: 100px;
+  }
 }

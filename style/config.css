@@ -1,88 +1,115 @@
 :root {
-    --color-white: #fff;
-    --color-black: #000;
-    --color-orange: #ffa600;
-    --color-yellow: #ffff00;
-    --color-green: #08af08;
-    --color-red: #ff0000;
-    --color-light-gray: #ddddddee;
-    --color-gray: #777777;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-orange: #ffa600;
+  --color-yellow: #ffff00;
+  --color-green: #08af08;
+  --color-red: #ff0000;
+  --color-light-gray: #ddddddee;
+  --color-gray: #777777;
 }
 
-@font-face{
-    font-family: 'MyWebFont';
-    src: url('../fonts/WebFont.eot');
-    src: url('../fonts/WebFont.eot?iefix') format('eot'),
-    url('../fonts/WebFont.woff') format('woff'),
-    url('../fonts/WebFont.ttf') format('truetype'),
-    url('../fonts/WebFont.svg#webfont') format('svg');
-    font-weight: normal;
-    font-style: normal;
+@font-face {
+  font-family: "Caveat";
+  font-weight: 700; /* Соответствует значению bold */
+  src: url("../public/fonts/Caveat-Bold.ttf");
 }
+
+@font-face {
+  font-family: "Caveat";
+  font-weight: 500; /* Соответствует значению medium */
+  src: url("../public/fonts/Caveat-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Caveat";
+  font-weight: 400; /* Соответствует значению regular */
+  src: url("../public/fonts/Caveat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 700; /* Соответствует значению bold */
+  src: url("../public/fonts/Ubuntu-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 500; /* Соответствует значению medium */
+  src: url("../public/fonts/Ubuntu-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 400; /* Соответствует значению regular */
+  src: url("../public/fonts/Ubuntu-Regular.ttf");
+}
+
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-    background-color: var(--color-white);
-    color: var(--color-black);
-    min-height: 100%;
-    margin: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  font-family: "Ubuntu", sans-serif !important;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  min-height: 100%;
+  margin: 0;
+}
 
 * {
-    box-sizing: border-box;
-    width: 100%;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .l-container {
-    margin: 0 auto;
-    width: 1500px;
+  margin: 0 auto;
+  width: 1500px;
 }
 
 .c-button {
-    background-color: var(--color-light-gray);
-    color: var(--color-black);
-    border: 2px solid var(--color-gray);
-    border-radius: 10px;
-    padding: 15px 25px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    max-width: max-content;
-    text-decoration: none;
-    display: block;
+  background-color: var(--color-light-gray);
+  color: var(--color-black);
+  border: 2px solid var(--color-gray);
+  border-radius: 10px;
+  padding: 15px 25px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  max-width: max-content;
+  text-decoration: none;
+  display: block;
+  text-decoration: none;
 }
 
 .c-button:hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 /* min style */
 @media (max-width: 768px) {
-    .l-container {
-        margin: 30 auto;
-        width: calc(100% - 60px);
-    }
+  .l-container {
+    margin: 30 auto;
+    width: calc(100% - 60px);
+  }
 }
 
 /* middle style */
 @media (min-width: 769px) and (max-width: 1200px) {
-    .l-container {
-        margin: 60 auto;
-        width: calc(100% - 120px);
-    }
+  .l-container {
+    margin: 60 auto;
+    width: calc(100% - 120px);
+  }
 }
 
 /* big style */
 @media (min-width: 1201px) and (max-width: 1600px) {
-    .l-container {
-        margin: 100 auto;
-        width: calc(100% - 200px);
-    }
+  .l-container {
+    margin: 100 auto;
+    width: calc(100% - 200px);
+  }
 }
