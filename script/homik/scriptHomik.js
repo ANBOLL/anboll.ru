@@ -1,36 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const EVENTS_DELAY = 21000;
+    // const EVENTS_DELAY = 21000;
     const MAX_KEYS_PER_GAME_PER_DAY = 20;
     const games = {
         1: {
             name: 'Riding Extreme 3D',
             appToken: 'd28721be-fd2d-4b45-869e-9f253b554e50',
             promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
+            eventsDelay: 21000,
+            attemptsNumber: 22,
         },
         2: {
             name: 'Chain Cube 2048',
             appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
             promoId: 'b4170868-cef0-424f-8eb9-be0622e8e8e3',
+            eventsDelay: 20000,
+            attemptsNumber: 10
         },
         3: {
             name: 'My Clone Army',
             appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
             promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
+            eventsDelay: 120000,
+            attemptsNumber: 11,
         },
         4: {
             name: 'Train Miner',
             appToken: '82647f43-3f87-402d-88dd-09a90025313f',
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
+            eventsDelay: 20000,
+            attemptsNumber: 10,
         },
         5: {
             name: 'MergeAway',
             appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
+            eventsDelay: 20000,
+            attemptsNumber: 10,
         },
         6: {
             name: 'Twerk Race 3D',
             appToken: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
+            eventsDelay: 20000,
+            attemptsNumber: 10,
         }
     };
 
@@ -149,7 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startBtn.addEventListener('click', async () => {
         const gameChoice = parseInt(gameSelect.value);
-        const keyCount = parseInt(keyCountSelect.value);
+        let keyCount = 0;
+        if(keyCountSelect.value <= MAX_KEYS_PER_GAME_PER_DAY) {
+            keyCount = parseInt(keyCountSelect.value);
+        } else {
+            alert(`Какие, блять ${keyCountSelect.value} ключей!`)
+        }
         const game = games[gameChoice];
         const storageKey = 'keys_generated_' + game.name;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
@@ -196,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const generateKeyProcess = async () => {
             const clientId = generateClientId();
             let clientToken;
-
             try {
                 clientToken = await login(clientId, game.appToken);
             } catch (error) {
@@ -205,10 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return null;
             }
 
-            for (let i = 0; i < 11; i++) {
-                await sleep(EVENTS_DELAY * delayRandom());
+            for (let i = 0; i < game.attemptsNumber; i++) {
+                await sleep(game.eventsDelay * delayRandom());
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress(7 / keyCount, 'Типо чото важное происходит...');
+                updateProgress(Math.round((100 / game.attemptsNumber) / keyCount), 'Типо чото важное происходит...');
                 if (hasCode) {
                     break;
                 }
