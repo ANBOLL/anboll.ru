@@ -19,7 +19,7 @@
     <?php } ?>
     <?php 
         $offset = $offset ?? true;
-        $script_data = $script_data ?? [];
+        $style_data = $style_data ?? [];
         $script_data = $script_data ?? [];
         $component_data = $component_data ?? [];
 
