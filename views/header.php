@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="expires" content="0">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
     <link type="image/x-icon" href="/public/images/site/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="/style/config.css">
     <link rel="stylesheet" href="/style/header.css">
@@ -44,12 +46,17 @@
 <body>
     <header class="<?= $offset ? 'offset' : ''?>">
         <div class="header-wrapper">
-            <div class="header-content">
-                <div class="l-container">
+            <div class="l-container">
+                <div class="header-content">
                     <?php if ($_SERVER['REQUEST_URI'] != '/') {?>
                         <a href="/" class="logo-link"></a>
                     <?php } else {?>
                         <div href="/" class="logo"></div>
+                    <?php } 
+                    if ($user !== null) {?>
+                        <a href="/profile/" title="Личный кабинет" class="profile user"></a>
+                    <?php } else {?>
+                        <div title="Вход" class="profile login"></div>
                     <?php } ?>
                 </div>
             </div>

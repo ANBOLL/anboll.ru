@@ -1,10 +1,12 @@
-<div class="popup">
+<div id="<?= $id = $id ?? ""?>" class="popup <? $user ? "" : "is-active"?>" data-id="<?= $id = $id ?? ""?>">
     <div class="offset"></div>
     <div class="popup-wrapper">
-        <div class="popup-close"></div>
+        <div class="close">
+            <span class="top"></span>
+            <span class="bot"></span>
+        </div>
         <div class="popup-content">
-            12112
-            <? $content = $content ?? ""  ?>
+            <?= $content = $content ?? "" ?>
         </div>
     </div>
 </div>

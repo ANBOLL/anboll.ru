@@ -1,5 +1,5 @@
 <?php
-$title_meta = "404";
+$title_meta = "Page not found";
 include_once("views/header.php");
 ?>
 <section class="page_404">

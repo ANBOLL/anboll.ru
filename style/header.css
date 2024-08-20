@@ -46,6 +46,51 @@ header.offset {
 .header-content {
   position: relative;
   z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.profile {
+  background-color: var(--color-white);
+  cursor: pointer;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.profile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: var(--color-black);
+  transition: all 0.3s;
+}
+
+.profile.login::after {
+  mask-image: url("/public/images/icons/login.svg");
+}
+
+.profile.user::after {
+  mask-image: url("/public/images/icons/profile.svg");
+}
+
+.profile:hover {
+  background-color: var(--color-black);
+  cursor: pointer;
+}
+
+.profile:hover::after {
+  background-color: var(--color-white);
 }
 
 /* ADAPTIVE */
@@ -61,6 +106,16 @@ header.offset {
   .logo-link {
     height: 80px;
     width: 140px;
+  }
+
+  .profile {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .profile::after {
+    height: 30px;
+    width: 30px;
   }
 }
 

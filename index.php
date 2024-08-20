@@ -27,7 +27,7 @@ if (is_string($file)) {
     if (file_exists('views/' . $file . ".php") && $file !== "header" && $file !== "footer") {
         echo $controller->render($file, array("style" => "/style/".$file."/".$file.".css", "user" => $user));
     } else {
-        echo $controller->render('404', array("style" => "/style/404.css"));
+        echo $controller->render('404', array("style" => "/style/404.css", "user" => $user));
     }
 } else {
     echo 'Error: не корректный путь';

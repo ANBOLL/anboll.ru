@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__.'/auth/boot.php';
 $code = "Index";
 $title_meta = "ANBOLL";
 $style_data = [
@@ -24,36 +25,50 @@ include_once("views/header.php");
             <a class="c-button" href="/homik/">Генератор ключа Hamster Kombat</a>
         </div>
     </div>
-    <? include("views/components/popup/popup.php"); ?>
+    
+    <?
+    $id = "login-popup";
+    $content = '
     <div class="container">
-        <div class="row py-5">
-            <div class="col-lg-6">
-                <?php if ($user) { ?>
-                <h1>Welcome back, <?=htmlspecialchars($user['username'])?>!</h1>
-                <form class="mt-5" method="post" action="/views/auth/do_logout.php">
-                    <button type="submit" class="btn btn-primary">Logout</button>
-                </form>
-                <?php } else { ?>
-                <h1 class="mb-5">Registration</h1>
-                <?php flash(); ?>
-                <form method="post" action="/views/auth/do_register.php">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Register</button>
-                        <a class="btn btn-outline-primary" href="/views/auth/login.php">Login</a>
-                    </div>
-                </form>
-                <?php } ?>
+        <div class="h1">Войти</div>
+        <?php flash() ?>
+        <form class="form" id="login-form" method="post" action="/views/auth/do_login.php">
+            <div class="input-label-container">
+                <input type="text" class="form-input" id="username" name="username" placeholder="Логин" required>
             </div>
-        </div>
+            <div class="input-label-container">
+                <input type="password" class="form-input" id="password" name="password" placeholder="Пароль" required>
+            </div>
+            <div class="form-button">
+                <button type="submit" class="c-button">Войти</button>
+                <div class="register-btn c-button">Регистрация</div>
+            </div>
+        </form>
     </div>
+    '; 
+    include("views/components/popup/popup.php"); ?>
+
+    <?
+    $id = "register-popup";
+    $content = '
+    <div class="container">
+        <div class="h1">Регистрация</div>
+        <?php flash(); ?>
+        <form class="form" id="register-form" method="post" action="/views/auth/do_register.php">
+            <div class="input-label-container">
+                <input type="text" class="form-input" id="username" name="username" placeholder="Логин" required>
+            </div>
+            <div class="input-label-container">
+                <input type="password" class="form-input" id="password" name="password" placeholder="Пароль" required>
+            </div>
+            <div class="form-button">
+                <button type="submit" class="c-button">Регистрация</button>
+                <div class="login-btn c-button">Войти</div>
+            </div>
+        </form>
+    </div>
+    '; 
+    include("views/components/popup/popup.php"); ?>
 </div>
 <?php
 include_once("views/footer.php");
