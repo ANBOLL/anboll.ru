@@ -4,9 +4,9 @@ require_once __DIR__.'/views/auth/boot.php';
 use App\Controllers\NewsController;
 
 $controller = new NewsController();
-$urlParts = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+$urlParts = trim($_SERVER['REQUEST_URI'] , '/');
 
-$controllerPath = $urlParts[0];
+$controllerPath = $urlParts;
 
 $user = null;
 
