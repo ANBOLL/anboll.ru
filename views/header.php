@@ -19,21 +19,21 @@
     <?php } ?>
     <?php 
         $offset = $offset ?? true;
-        $script_data = $script_data ?? "";
-        $style_data = $style_data ?? "";
-        $component_data = $component_data ?? "";
-        
-        if($style_data !== "") {
+        $script_data = $script_data ?? [];
+        $script_data = $script_data ?? [];
+        $component_data = $component_data ?? [];
+
+        if($style_data) {
             foreach ($style_data as $value_style) {
                 echo "<link rel=\"stylesheet\" href=\"/style" . $value_style . "\">";
             }
         }
-        if($script_data !== "") {
+        if($script_data) {
             foreach ($script_data as $value_script) {
                 echo "<script src=\"/script" . $value_script . "\"></script>";
             }
         }
-        if($component_data !== "") {
+        if($component_data) {
             foreach ($component_data as $value_component) {
                 echo "<script src=\"/views/components/" . $value_component . "/" . $value_component . ".js" . "\"></script>";
                 echo "<link rel=\"stylesheet\" href=\"/views/components/" . $value_component . "/" . $value_component . ".css" . "\">";
