@@ -24,7 +24,8 @@ include_once("views/header.php");
                     <option value="3">My Clone Army</option>
                     <option value="4">Train Miner</option>
                     <option value="5">Merge Away</option>
-                    <option value="6">Twerk Race <sup>(new)</sup></option>
+                    <option value="6">Twerk Race</option>
+                    <option value="7">Polysphere <sup>(new)</sup></option>
                 </select>
             </div>
         </div>
