@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const popupElems = document.querySelectorAll('.popup');
     popupElems.forEach(popup => {
         const popupId = document.getElementById(popup.dataset.id);
-        const offset = popup.querySelector('.offset');
+        const offset = popup.querySelector('.offset-popup');
         const close = popup.querySelector('.close');
 
         offset.addEventListener("click", ()=> {
