@@ -35,14 +35,6 @@
   justify-content: center;
 }
 
-.form {
-  margin-top: 30px;
-}
-
-.input-label-container:not(:last-child) {
-  margin-bottom: 30px;
-}
-
 /* ADAPTIVE */
 
 /* min style */

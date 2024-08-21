@@ -116,6 +116,14 @@ input {
   justify-content: space-between;
 }
 
+.form {
+  margin-top: 30px;
+}
+
+.input-label-container:not(:last-child) {
+  margin-bottom: 30px;
+}
+
 /* min style */
 @media (max-width: 768px) {
   .l-container {

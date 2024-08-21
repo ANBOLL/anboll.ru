@@ -33,11 +33,11 @@ select {
   margin-bottom: 15px;
 }
 
-.c-button {
+.homik-button {
   margin: 30px auto 20px;
 }
 
-.key-item .c-button {
+.key-item .homik-button {
   margin: 0;
 }
 

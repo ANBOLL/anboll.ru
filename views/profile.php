@@ -1,5 +1,4 @@
 <?php
-session_start();
 $title_meta = "Профиль" . $user["username"];
 $style_data = [
     "/profile/style.css",

@@ -1,4 +1,5 @@
 <?php
+
 include_once("./App/Autoloader.php");
 require_once __DIR__.'/views/auth/boot.php';
 use App\Controllers\NewsController;
@@ -9,13 +10,13 @@ $urlParts = trim($_SERVER['REQUEST_URI'] , '/');
 $controllerPath = $urlParts;
 
 $user = null;
-
 if (check_auth()) {
     // Получим данные пользователя по сохранённому идентификатору
     $stmt = pdo()->prepare("SELECT * FROM `users` WHERE `id` = :id");
     $stmt->execute(['id' => $_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
 
 if ($controllerPath) {
     $file = $controllerPath;

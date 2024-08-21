@@ -1,5 +1,4 @@
 <?php
-session_start();
 $code = "Index";
 $title_meta = "Hamster Kombat";
 $style_data = [
@@ -40,7 +39,7 @@ include_once("views/header.php");
                 </select>
             </div>
         </div>
-        <div class="c-button" id="startBtn">Получить ключ(и)</div>
+        <div class="homik-button c-button" id="startBtn">Получить ключ(и)</div>
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
                 <div id="progressBar"></div>
@@ -51,7 +50,7 @@ include_once("views/header.php");
         <div id="keyContainer" class="hidden">
             <h3 id="generatedKeysTitle" class="hidden">Ну кароче вот... Чем богаты - тому рады:</h3>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="c-button hidden">Скопировать все ключи разом, по мужЫцки</button>
+            <button id="copyAllBtn" class="homik-button c-button hidden">Скопировать все ключи разом, по мужЫцки</button>
             <div id="copyStatus" class="hidden">Ура, у тебя получилось!</div>
         </div>
     </div>

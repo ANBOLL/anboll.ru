@@ -1,5 +1,5 @@
 <div id="<?= $id = $id ?? ""?>" class="popup <? $user ? "" : "is-active"?>" data-id="<?= $id = $id ?? ""?>">
-    <div class="offset"></div>
+    <div class="offset-popup"></div>
     <div class="popup-wrapper">
         <div class="close">
             <span class="top"></span>

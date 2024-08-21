@@ -1,7 +1,5 @@
 <?php
-
-// Инициализируем сессию
-// session_start();
+session_start();
 
 // Простой способ сделать глобально доступным подключение в БД
 function pdo(): PDO
@@ -9,8 +7,8 @@ function pdo(): PDO
     static $pdo;
 
     if (!$pdo) {
-        if (file_exists(__DIR__ . '\config.php')) {
-            $config = include __DIR__ . '\config.php';
+        if (file_exists(__DIR__ . '/config.php')) {
+            $config = include __DIR__ . '/config.php';
         } else {
             $msg = 'Создайте и настройте config.php на основе config.sample.php';
             trigger_error($msg, E_USER_ERROR);

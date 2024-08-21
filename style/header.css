@@ -5,6 +5,7 @@ header {
 
 header.offset {
   height: 110px;
+  display: block;
 }
 
 .logo-link,
