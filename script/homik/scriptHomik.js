@@ -8,13 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
             eventsDelay: 21000,
             attemptsNumber: 22,
+            interval: 20,
+            eventCount: 13,
         },
         2: {
             name: 'Chain Cube 2048',
             appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
             promoId: 'b4170868-cef0-424f-8eb9-be0622e8e8e3',
             eventsDelay: 20000,
-            attemptsNumber: 10
+            attemptsNumber: 10,
+            interval: 20,
+            eventCount: 3,
         },
         3: {
             name: 'My Clone Army',
@@ -22,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
             eventsDelay: 120000,
             attemptsNumber: 11,
+            interval: 120,
+            eventCount: 5,
         },
         4: {
             name: 'Train Miner',
@@ -29,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
             eventsDelay: 20000,
             attemptsNumber: 10,
+            interval: 120,
+            eventCount: 1,
         },
         5: {
             name: 'MergeAway',
@@ -36,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
             eventsDelay: 20000,
             attemptsNumber: 10,
+            interval: 21,
+            eventCount: 7,
         },
         6: {
             name: 'Twerk Race 3D',
@@ -43,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             eventsDelay: 20000,
             attemptsNumber: 10,
+            interval: 20,
+            eventCount: 10,
         },
         7: {
             name: 'Polysphere',
@@ -50,6 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             eventsDelay: 20000,
             attemptsNumber: 16,
+            interval: 20,
+            eventCount: 16,
+        },
+        8: {
+            name: 'Mow and Trim',
+            appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+            promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+            eventsDelay: 20000,
+            attemptsNumber: 20,
+            interval: 20,
+            eventCount: 10,
+        },
+        9: {
+            name: 'Mud Racing',
+            appToken: '8814a785-97fb-4177-9193-ca4180ff9da8',
+            promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
+            eventsDelay: 20000,
+            attemptsNumber: 20,
+            interval: 20,
+            eventCount: 10,
         }
     };
 
@@ -72,7 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyStatus = document.getElementById('copyStatus');
     const previousKeysContainer = document.getElementById('previousKeysContainer');
     const previousKeysList = document.getElementById('previousKeysList');
-
+    const progressDefault = document.querySelector('.progress-default');
+    const customSelect = document.querySelector('.custom-select');
+    
     const initializeLocalStorage = () => {
         const now = new Date().toISOString().split('T')[0];
         Object.values(games).forEach(game => {
@@ -84,11 +118,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const generateClientId = () => {
+    // const generateClientId = () => {
+    //     const timestamp = Date.now();
+    //     const randomNumbers = Array.from({ length: 19 }, () => Math.floor(Math.random() * 10)).join('');
+    //     return `${timestamp}-${randomNumbers}`;
+    // };
+
+    function generateClientId() {
+        // return crypto.randomUUID();
+        
         const timestamp = Date.now();
-        const randomNumbers = Array.from({ length: 19 }, () => Math.floor(Math.random() * 10)).join('');
-        return `${timestamp}-${randomNumbers}`;
-    };
+        const randomNumbers = [];
+        
+        for (let i = 0; i < 19; i++) {
+            randomNumbers.push(Math.floor(Math.random() * 10));
+        }
+        
+        return `${timestamp}-${randomNumbers.join('')}`;
+    }
 
     const login = async (clientId, appToken) => {
         const response = await fetch('https://api.gamepromo.io/promo/login-client', {
@@ -164,10 +211,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const delayRandom = () => Math.random() / 3 + 1;
 
+
+
+    function printTime(distance) {
+        // const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+        return '≈ ' +
+            // String(hours).padStart(2, '0') + ':' +
+            String(minutes).padStart(2, '0') + ':' +
+            String(seconds).padStart(2, '0') + (minutes > 0 ? ' минут' : ' секунд');
+    }
+
+    function updateGenerateTime(select) {
+        const selectedGame = parseInt(select);
+    
+        let eventInterval =  games[selectedGame].interval;
+        let eventCount =  games[selectedGame].eventCount;
+    
+        const generateTimeValue = printTime((eventInterval * eventCount + 30) * 1000);
+        progressDefault.innerHTML = generateTimeValue;
+        progressDefault.dataset.time = (eventInterval * eventCount + 30) * 1000;
+    }
+
+    customSelect.addEventListener("click", ()=> {
+        const selectCustom = customSelect.querySelector('.select-items').querySelector('.same-as-selected');
+        updateGenerateTime(selectCustom.getAttribute("value"));
+    });
+
     initializeLocalStorage();
 
     startBtn.addEventListener('click', async () => {
         const gameChoice = parseInt(gameSelect.value);
+        if (keyCountSelect.value > 1) {
+            progressDefault.dataset.time *= Math.round(keyCountSelect.value / 2);
+        }
+        const intervalProgress = setInterval(() => {
+            progressDefault.dataset.time -= 1000;
+            progressDefault.innerHTML = printTime(progressDefault.dataset.time);
+            progressDefault.dataset.color = progressDefault.dataset.color == "yes" ? "no" : "yes";
+
+            if (progressDefault.dataset.time < 0) {
+                progressDefault.dataset.time = 10*60*1000 - Math.floor(Math.random() * 60*1000);
+            }
+        }, 1000);
+
         let keyCount = 0;
         if(keyCountSelect.value <= MAX_KEYS_PER_GAME_PER_DAY) {
             keyCount = parseInt(keyCountSelect.value);
@@ -193,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         keyCountLabel.innerText = `Количество ключей: ${keyCount}`;
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = 'Начинается суета... \n По-братски подожди минуты 2...';
+        progressLog.innerText = 'Начинается суета...';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -294,6 +383,8 @@ document.addEventListener('DOMContentLoaded', () => {
         progressContainer.classList.add('hidden');
         mainTitle.classList.remove('hidden');
         startBtn.classList.remove('hidden');
+        clearInterval(intervalProgress);
+        progressDefault.innerText = "ща, посчитаем...";
         customSelects.forEach(customSelect => {
             customSelect.classList.remove('hidden');
         });

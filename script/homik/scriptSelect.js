@@ -18,6 +18,7 @@ for (i = 0; i < l; i++) {
     /* для каждой опции в оригинальном выпадающем списке
   создаем новый элемент DIV, который будет работать как опция */
     c = document.createElement("DIV");
+    c.setAttribute("value", selElmnt.options[j].value);
     c.innerHTML = selElmnt.options[j].innerHTML;
     c.addEventListener("click", function (e) {
       /* когда на элемент кликают, обновляем оригинальный выпадающий список

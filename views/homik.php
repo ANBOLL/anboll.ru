@@ -24,8 +24,10 @@ include_once("views/header.php");
                     <option value="3">My Clone Army</option>
                     <option value="4">Train Miner</option>
                     <option value="5">Merge Away</option>
-                    <option value="6">Twerk Race</option>
-                    <option value="7">Polysphere <sup>(new)</sup></option>
+                    <option value="6">Twerk Race </option>
+                    <option value="7">Polysphere </option>
+                    <option value="8">Mow and Trim (NEW)</option>
+                    <option value="9">Mud Racing (NEW)</option>
                 </select>
             </div>
         </div>
@@ -37,9 +39,11 @@ include_once("views/header.php");
                     <option value="2">Два, как в рекламе</option>
                     <option value="3">Три, как любит бог</option>
                     <option value="4">Четыре, чтоб сразу с кайфом</option>
+                    <option value="8">Восемь штук, возьми на второй акк</option>
                 </select>
             </div>
         </div>
+        <div class="progress-default" data-time="290000">≈ 04:50 минут</div>
         <div class="homik-button c-button" id="startBtn">Получить ключ(и)</div>
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
