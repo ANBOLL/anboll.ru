@@ -12,52 +12,56 @@ $script_data = [
 include_once("views/header.php");
 ?>
 <div class="l-container">
-    <div class="container">
-        <h1 class="main-title">Кароч, ключи для хомяка тута 👇</h1>
-        <h1 class="second-title hidden">Немного терпения, ты же веришь в листинг хомяка... 🐹</h1>
+<div class="container">
+        <h1>Ты знаешь что тут</h1>
         <div class="form-group">
-            <label class="gameSelect-label" for="gameSelect">Выбери игру для генерации ключей:</label>
-            <div class="custom-select" >
-                <select id="gameSelect">
-                    <option value="1">Bike Ride 3D</option>
-                    <option value="2">Chain Cube 2048</option>
-                    <option value="3">My Clone Army</option>
-                    <option value="4">Train Miner</option>
-                    <option value="5">Merge Away</option>
-                    <option value="6">Twerk Race </option>
-                    <option value="7">Polysphere </option>
-                    <option value="8">Mow and Trim (NEW)</option>
-                    <option value="9">Mud Racing (NEW)</option>
-                </select>
-            </div>
+            <label id="gameSelectLabel" for="gameSelect">Выбери игру</label>
+            <select id="gameSelect">
+                <option value="2">Chain Cube 2048</option>
+                <option value="4">Train Miner</option>
+                <option value="5">Merge Away</option>
+                <option value="6">Twerk Race</option>
+                <option value="7">Polysphere</option>
+                <option value="8">Mow and Trim</option>
+                <option value="3">Cafe Dash</option>
+                <option value="1">ZooPolis (new)</option>
+                <option value="9">Gangs Wars (new)</option>
+            </select>
         </div>
+        
         <div class="form-group">
-            <label id="keyCountLabel" for="keyCountSelect">Сколька ключей надо?</label>
-            <div class="custom-select" >
-                <select id="keyCountSelect">
-                    <option value="1">Один(</option>
-                    <option value="2">Два, как в рекламе</option>
-                    <option value="3">Три, как любит бог</option>
-                    <option value="4">Четыре, чтоб сразу с кайфом</option>
-                    <option value="8">Восемь штук, возьми на второй акк</option>
-                </select>
-            </div>
+            <label id="keyCountLabel" for="keyCountSelect">Сколько ключей:</label>
+            <select id="keyCountSelect">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+            </select>
         </div>
-        <div class="progress-default" data-time="290000">≈ 04:50 минут</div>
-        <div class="homik-button c-button" id="startBtn">Получить ключ(и)</div>
+        <button class="c-button" id="startBtn" style="margin: 0 auto 30px;">Получить ключи</button>
+        
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
                 <div id="progressBar"></div>
             </div>
             <div id="progressText">0%</div>
-            <div id="progressLog">Летс го...</div>
+            <div id="progressLog">Понеслось...</div>
+            <div id="countdownContainer">
+            <p>Следующее шаг через: <span id="countdownTimer"></span> секунд</p>
+            </div>
         </div>
         <div id="keyContainer" class="hidden">
-            <h3 id="generatedKeysTitle" class="hidden">Ну кароче вот... Чем богаты - тому рады:</h3>
+            <h3 id="generatedKeysTitle" class="hidden">Возьми же их:</h3>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="homik-button c-button hidden">Скопировать все ключи разом, по мужЫцки</button>
-            <div id="copyStatus" class="hidden">Ура, у тебя получилось!</div>
+            <button id="copyAllBtn" class="hidden">Скопировать все</button>
+            <div id="copyStatus" class="hidden">Скопировано!</div>
         </div>
+
+        <label>
+            <input type="checkbox" id="logCheckbox"> Показать логи (для тех кто шарит)
+        </label>
+        <textarea id="logArea" rows="3" readonly style="height: 100px;width: 100%; resize: none; font-size: 12px; display: none;"></textarea>
     </div>
 </div>
 <?php

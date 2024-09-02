@@ -1,73 +1,88 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    const MAX_KEYS_PER_GAME_PER_DAY = 10;
-    //const EVENTS_DELAY = 20000;
-
+    // const EVENTS_DELAY = 21000;
+    const MAX_KEYS_PER_GAME_PER_DAY = 20;
     const games = {
         1: {
-            name: 'ZooPolis',
-            appToken: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
-            promoId: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
+            name: 'Riding Extreme 3D',
+            appToken: 'd28721be-fd2d-4b45-869e-9f253b554e50',
+            promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
             eventsDelay: 21000,
             attemptsNumber: 22,
+            interval: 20,
+            eventCount: 13,
         },
         2: {
             name: 'Chain Cube 2048',
             appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
             promoId: 'b4170868-cef0-424f-8eb9-be0622e8e8e3',
             eventsDelay: 20000,
-            attemptsNumber: 15
+            attemptsNumber: 10,
+            interval: 20,
+            eventCount: 3,
         },
         3: {
-            name: 'Cafe Dash',
-            appToken: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
-            promoId: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
-            eventsDelay: 23000,
-            attemptsNumber: 18,
+            name: 'My Clone Army',
+            appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
+            promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
+            eventsDelay: 120000,
+            attemptsNumber: 11,
+            interval: 120,
+            eventCount: 5,
         },
         4: {
             name: 'Train Miner',
             appToken: '82647f43-3f87-402d-88dd-09a90025313f',
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
             eventsDelay: 20000,
-            attemptsNumber: 15,
+            attemptsNumber: 10,
+            interval: 120,
+            eventCount: 1,
         },
         5: {
             name: 'MergeAway',
             appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
             eventsDelay: 20000,
-            attemptsNumber: 15,
+            attemptsNumber: 10,
+            interval: 21,
+            eventCount: 7,
         },
         6: {
             name: 'Twerk Race 3D',
             appToken: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             eventsDelay: 20000,
-            attemptsNumber: 15,
-            
+            attemptsNumber: 10,
+            interval: 20,
+            eventCount: 10,
         },
-        7 : {
+        7: {
             name: 'Polysphere',
             appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             eventsDelay: 20000,
-            attemptsNumber: 18,
+            attemptsNumber: 16,
+            interval: 20,
+            eventCount: 16,
         },
         8: {
             name: 'Mow and Trim',
             appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
             promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-            eventsDelay: 21000,
-            attemptsNumber: 17,
+            eventsDelay: 20000,
+            attemptsNumber: 20,
+            interval: 20,
+            eventCount: 10,
         },
         9: {
-            name: 'Gangs Wars',
-            appToken: 'b6de60a0-e030-48bb-a551-548372493523',
-            promoId: 'c7821fa7-6632-482c-9635-2bd5798585f9',
-            eventsDelay: 40000,
-            attemptsNumber: 22,
-    	},
+            name: 'Mud Racing',
+            appToken: '8814a785-97fb-4177-9193-ca4180ff9da8',
+            promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
+            eventsDelay: 20000,
+            attemptsNumber: 20,
+            interval: 20,
+            eventCount: 10,
+        }
     };
 
     const startBtn = document.getElementById('startBtn');
@@ -82,32 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyAllBtn = document.getElementById('copyAllBtn');
     const generatedKeysTitle = document.getElementById('generatedKeysTitle');
     const gameSelect = document.getElementById('gameSelect');
+    const gameSelectLabel = document.querySelector('.gameSelect-label');
+    const secondTitle = document.querySelector('.second-title');
+    const customSelects = document.querySelectorAll('.custom-select');
+    const mainTitle = document.querySelector('.main-title');
     const copyStatus = document.getElementById('copyStatus');
     const previousKeysContainer = document.getElementById('previousKeysContainer');
     const previousKeysList = document.getElementById('previousKeysList');
-    const gameSelectLabel = document.getElementById('gameSelectLabel');
-
-    //for logs
-    const logMessage = (message) => {
-        const logArea = document.getElementById('logArea');
-        const logCheckbox = document.getElementById('logCheckbox');
+    const progressDefault = document.querySelector('.progress-default');
+    const customSelect = document.querySelector('.custom-select');
     
-        if (logCheckbox.checked) {
-            logArea.style.display = 'block'; // Show the textarea if logs are enabled
-            logArea.value += message + '\n';
-            logArea.scrollTop = logArea.scrollHeight; // Auto-scroll to the bottom
-        }
-    };
-    
-    document.getElementById('logCheckbox').addEventListener('change', (event) => {
-        const logArea = document.getElementById('logArea');
-        if (event.target.checked) {
-            logArea.style.display = 'block'; // Show the textarea when the checkbox is checked
-        } else {
-            logArea.style.display = 'none';  // Hide the textarea when the checkbox is unchecked
-        }
-    });
-
     const initializeLocalStorage = () => {
         const now = new Date().toISOString().split('T')[0];
         Object.values(games).forEach(game => {
@@ -119,11 +118,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const generateClientId = () => {
+    // const generateClientId = () => {
+    //     const timestamp = Date.now();
+    //     const randomNumbers = Array.from({ length: 19 }, () => Math.floor(Math.random() * 10)).join('');
+    //     return `${timestamp}-${randomNumbers}`;
+    // };
+
+    function generateClientId() {
+        // return crypto.randomUUID();
+        
         const timestamp = Date.now();
-        const randomNumbers = Array.from({ length: 19 }, () => Math.floor(Math.random() * 10)).join('');
-        return `${timestamp}-${randomNumbers}`;
-    };
+        const randomNumbers = [];
+        
+        for (let i = 0; i < 19; i++) {
+            randomNumbers.push(Math.floor(Math.random() * 10));
+        }
+        
+        return `${timestamp}-${randomNumbers.join('')}`;
+    }
 
     const login = async (clientId, appToken) => {
         const response = await fetch('https://api.gamepromo.io/promo/login-client', {
@@ -199,14 +211,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const delayRandom = () => Math.random() / 3 + 1;
 
+
+
+    function printTime(distance) {
+        // const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+        return '≈ ' +
+            // String(hours).padStart(2, '0') + ':' +
+            String(minutes).padStart(2, '0') + ':' +
+            String(seconds).padStart(2, '0') + (minutes > 0 ? ' минут' : ' секунд');
+    }
+
+    function updateGenerateTime(select) {
+        const selectedGame = parseInt(select);
+    
+        let eventInterval =  games[selectedGame].interval;
+        let eventCount =  games[selectedGame].eventCount;
+    
+        const generateTimeValue = printTime((eventInterval * eventCount + 30) * 1000);
+        progressDefault.innerHTML = generateTimeValue;
+        progressDefault.dataset.time = (eventInterval * eventCount + 30) * 1000;
+    }
+
+    customSelect.addEventListener("click", ()=> {
+        const selectCustom = customSelect.querySelector('.select-items').querySelector('.same-as-selected');
+        updateGenerateTime(selectCustom.getAttribute("value"));
+    });
+
     initializeLocalStorage();
 
     startBtn.addEventListener('click', async () => {
         const gameChoice = parseInt(gameSelect.value);
-        const keyCount = parseInt(keyCountSelect.value);
-        const game = games[gameChoice];
+        if (keyCountSelect.value > 1) {
+            progressDefault.dataset.time *= Math.round(keyCountSelect.value / 2);
+        }
+        const intervalProgress = setInterval(() => {
+            progressDefault.dataset.time -= 1000;
+            progressDefault.innerHTML = printTime(progressDefault.dataset.time);
+            progressDefault.dataset.color = progressDefault.dataset.color == "yes" ? "no" : "yes";
 
-        const storageKey = `keys_generated_${game.name}`;
+            if (progressDefault.dataset.time < 0) {
+                progressDefault.dataset.time = 10*60*1000 - Math.floor(Math.random() * 60*1000);
+            }
+        }, 1000);
+
+        let keyCount = 0;
+        if(keyCountSelect.value <= MAX_KEYS_PER_GAME_PER_DAY) {
+            keyCount = parseInt(keyCountSelect.value);
+        } else {
+            alert(`Какие, блять ${keyCountSelect.value} ключей!`)
+        }
+        const game = games[gameChoice];
+        const storageKey = 'keys_generated_' + game.name;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
 
         if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
@@ -220,19 +278,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        gameSelectLabel.innerText = `Игра: ${game.name}`;
         keyCountLabel.innerText = `Количество ключей: ${keyCount}`;
-        gameSelectLabel.innerHTML = `Выбранная игра: ${game.name}`
-
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = 'Суета... \n Жди, чо еще могу сказать...';
+        progressLog.innerText = 'Начинается суета...';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
         keysList.innerHTML = '';
         keyCountSelect.classList.add('hidden');
         gameSelect.classList.add('hidden');
+        secondTitle.classList.remove('hidden');
+        mainTitle.classList.add('hidden');
         startBtn.classList.add('hidden');
+        customSelects.forEach(customSelect => {
+            customSelect.classList.add('hidden');
+        });
         copyAllBtn.classList.add('hidden');
         startBtn.disabled = true;
 
@@ -243,66 +305,36 @@ document.addEventListener('DOMContentLoaded', () => {
             progressText.innerText = `${progress}%`;
             progressLog.innerText = message;
         };
-    
 
-    const generateKeyProcess = async () => {
-    const clientId = generateClientId();
-    let clientToken;
-    try {
-        clientToken = await login(clientId, game.appToken);
-    } catch (error) {
-        alert(`Failed to login: ${error.message}`);
-        startBtn.disabled = false;
-        return null;
-    }
-    for (let i = 0; i < game.attemptsNumber; i++) {
-        logMessage(`Попытка ${i + 1}: Отправка запроса...`);
-    
-        let countdown = game.eventsDelay / 1000;
-        const countdownContainer = document.getElementById('countdownContainer');
-        const countdownTimer = document.getElementById('countdownTimer');
-    
-        countdownContainer.style.display = 'block';
-        countdownTimer.textContent = countdown;
-    
-        const countdownInterval = setInterval(() => {
-            countdown -= 1;
-            countdownTimer.textContent = countdown;
-    
-            if (countdown <= 0) {
-                clearInterval(countdownInterval);
+        const generateKeyProcess = async () => {
+            const clientId = generateClientId();
+            let clientToken;
+            try {
+                clientToken = await login(clientId, game.appToken);
+            } catch (error) {
+                alert(`Failed to login: ${error.message}`);
+                startBtn.disabled = false;
+                return null;
             }
-        }, 1000);
-    
-        await sleep(game.eventsDelay * delayRandom());
-    
-        clearInterval(countdownInterval);
-        countdownContainer.style.display = 'none';
-    
-        const hasCode = await emulateProgress(clientToken, game.promoId);
-        updateProgress(((100 / game.attemptsNumber) / keyCount), 'Иммитирую работу...');
-    
-        if (hasCode) {
-            logMessage(`Попытка ${i + 1}: Запрос выполнен успешно. Код получен.`);
-            break;
-        } else {
-            logMessage(`Попытка ${i + 1}: Запрос не удался. Код не получен.`);
-        }
-    }
-    
-    try {
-        logMessage('Все, ключ у нас, ща отдам...');
-        const key = await generateKey(clientToken, game.promoId);
-        logMessage('Ну вот и он.');
-        updateProgress(30 / keyCount, 'Генерирую его...');
-        return key;
-    } catch (error) {
-        logMessage(`Генерация ключа не удалась: ${error.message}`);
-        alert(`Не удалось сгенерировать ключ: ${error.message}`);
-        return null;
-    }
-};
 
+            for (let i = 0; i < game.attemptsNumber; i++) {
+                await sleep(game.eventsDelay * delayRandom());
+                const hasCode = await emulateProgress(clientToken, game.promoId);
+                updateProgress(Math.round((100 / game.attemptsNumber) / keyCount), 'Типо чото важное происходит...');
+                if (hasCode) {
+                    break;
+                }
+            }
+
+            try {
+                const key = await generateKey(clientToken, game.promoId);
+                updateProgress(30 / keyCount, 'Ну, создаю те ключ...');
+                return key;
+            } catch (error) {
+                alert(`Failed to generate key: ${error.message}`);
+                return null;
+            }
+        };
 
         const keys = await Promise.all(Array.from({ length: keyCount }, generateKeyProcess));
 
@@ -310,15 +342,16 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML = keys.filter(key => key).map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">СкАпироват</button>
+                    <button class="c-button copyKeyBtn" data-key="${key}">Скопировать</button>
                 </div>`
             ).join('');
             copyAllBtn.classList.remove('hidden');
+            
         } else if (keys.length === 1) {
             keysList.innerHTML =
                 `<div class="key-item">
                     <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">СкАпироват</button>
+                    <button class="c-button copyKeyBtn" data-key="${keys[0]}">Скопировать</button>
                 </div>`;
         }
 
@@ -332,7 +365,8 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', (event) => {
                 const key = event.target.getAttribute('data-key');
                 navigator.clipboard.writeText(key).then(() => {
-                    copyStatus.innerText = `Copied ${key}`;
+                    copyStatus.classList.remove('hidden');
+                    copyStatus.innerText = `Скопировался ${key}`;
                     setTimeout(() => {
                         copyStatus.innerText = '';
                     }, 2000);
@@ -345,47 +379,27 @@ document.addEventListener('DOMContentLoaded', () => {
         startBtn.disabled = false;
         keyCountSelect.classList.remove('hidden');
         gameSelect.classList.remove('hidden');
-        startBtn.classList.remove('hidden');
+        secondTitle.classList.add('hidden');
         progressContainer.classList.add('hidden');
+        mainTitle.classList.remove('hidden');
+        startBtn.classList.remove('hidden');
+        clearInterval(intervalProgress);
+        progressDefault.innerText = "ща, посчитаем...";
+        customSelects.forEach(customSelect => {
+            customSelect.classList.remove('hidden');
+        });
     });
 
     copyAllBtn.addEventListener('click', () => {
         const allKeys = Array.from(document.querySelectorAll('.key-item input')).map(input => input.value).join('\n');
         navigator.clipboard.writeText(allKeys).then(() => {
-            copyStatus.innerText = 'Все скопированы';
+            copyStatus.classList.remove('hidden');
+            copyStatus.innerText = 'Все ключи скопированы';
             setTimeout(() => {
                 copyStatus.innerText = '';
             }, 2000);
         }).catch(err => {
             console.error('Could not copy text: ', err);
         });
-    });
-
-    document.getElementById('ShowKeysBtn').addEventListener('click', () => {
-        const generatedCodesContainer = document.getElementById('generatedCodesContainer');
-        const generatedCodesList = document.getElementById('generatedCodesList');
-        generatedCodesList.innerHTML = ''; // Clear the list
-
-        let codesGeneratedToday = [];
-
-        Object.keys(games).forEach(key => {
-            const game = games[key];
-            const storageKey = `keys_generated_${game.name}`;
-            const storedData = JSON.parse(localStorage.getItem(storageKey));
-
-            if (storedData && storedData.keys && storedData.keys.length > 0) {
-                codesGeneratedToday = codesGeneratedToday.concat(storedData.keys.map(code => {
-                    return `<li>${game.name}: ${code}</li>`;
-                }));
-            }
-        });
-
-        if (codesGeneratedToday.length > 0) {
-            generatedCodesList.innerHTML = codesGeneratedToday.join('');
-        } else {
-            generatedCodesList.innerHTML = '<li>Не сегодня, сори.</li>';
-        }
-
-        generatedCodesContainer.style.display = 'block';
     });
 });

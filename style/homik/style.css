@@ -22,7 +22,8 @@ h1 {
 
 
 .form-group {
-  margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 label {
@@ -74,17 +75,20 @@ select {
 
 .key-item {
   display: flex;
-  align-items: start;
+  align-items: center;
   margin-top: 10px;
 }
 
 .key-item input {
-  flex: 1;
   padding: 10px;
   font-size: 14px;
   border: 1px solid var(--color-light-gray);
   border-radius: 5px;
   margin-right: 10px;
+}
+
+#logCheckbox {
+  width: max-content;
 }
 
 .copyKeyBtn {
