@@ -23,9 +23,9 @@ include_once("views/header.php");
                 <option value="6">Twerk Race</option>
                 <option value="7">Polysphere</option>
                 <option value="8">Mow and Trim</option>
-                <option value="3">Cafe Dash</option>
-                <option value="1">ZooPolis (new)</option>
-                <option value="9">Gangs Wars (new)</option>
+                <option value="3">Fluff Crusade (new)</option>
+                <option value="1">ZooPolis </option>
+                <option value="9">Tile Trio (new)</option>
             </select>
         </div>
         
@@ -36,7 +36,6 @@ include_once("views/header.php");
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-                <option value="8">8</option>
             </select>
         </div>
         <button class="c-button" id="startBtn" style="margin: 0 auto 30px;">Получить ключи</button>

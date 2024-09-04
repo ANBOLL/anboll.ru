@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             attemptsNumber: 15
         },
         3: {
-            name: 'Cafe Dash',
-            appToken: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
-            promoId: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
+            name: 'Fluff Crusade',
+            appToken: '112887b0-a8af-4eb2-ac63-d82df78283d9',
+            promoId: '112887b0-a8af-4eb2-ac63-d82df78283d9',
             eventsDelay: 23000,
             attemptsNumber: 18,
         },
@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             eventsDelay: 20000,
             attemptsNumber: 15,
-            
         },
         7 : {
             name: 'Polysphere',
@@ -55,19 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
             attemptsNumber: 18,
         },
         8: {
-            name: 'Mow and Trim',
-            appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-            promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-            eventsDelay: 21000,
-            attemptsNumber: 17,
+                name: 'Mow and Trim',
+                appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+                promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+                eventsDelay: 21000,
+                attemptsNumber: 17,
         },
         9: {
-            name: 'Gangs Wars',
-            appToken: 'b6de60a0-e030-48bb-a551-548372493523',
-            promoId: 'c7821fa7-6632-482c-9635-2bd5798585f9',
+            name: 'Tile Trio',
+            appToken: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
+            promoId: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
             eventsDelay: 40000,
             attemptsNumber: 22,
-    	},
+        },
     };
 
     const startBtn = document.getElementById('startBtn');
