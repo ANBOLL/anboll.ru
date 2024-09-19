@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    const MAX_KEYS_PER_GAME_PER_DAY = 10;
+    const MAX_KEYS_PER_GAME_PER_DAY = 12;
     //const EVENTS_DELAY = 20000;
 
     const games = {
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Fluff Crusade',
             appToken: '112887b0-a8af-4eb2-ac63-d82df78283d9',
             promoId: '112887b0-a8af-4eb2-ac63-d82df78283d9',
-            eventsDelay: 23000,
-            attemptsNumber: 18,
+            eventsDelay: 20000,
+            attemptsNumber: 32,
         },
         4: {
             name: 'Train Miner',
@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             eventsDelay: 20000,
             attemptsNumber: 15,
+            
         },
         7 : {
             name: 'Polysphere',
@@ -54,19 +55,78 @@ document.addEventListener('DOMContentLoaded', () => {
             attemptsNumber: 18,
         },
         8: {
-                name: 'Mow and Trim',
-                appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-                promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-                eventsDelay: 21000,
-                attemptsNumber: 17,
+            name: 'Mow and Trim',
+            appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+            promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+            eventsDelay: 21000,
+            attemptsNumber: 17,
+                
         },
         9: {
             name: 'Tile Trio',
             appToken: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
             promoId: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
-            eventsDelay: 40000,
+            eventsDelay: 20000,
             attemptsNumber: 22,
+                
         },
+        10: {
+            name: 'Stone Age',
+            appToken: '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
+            promoId: '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
+            eventsDelay: 22000,
+            attemptsNumber: 25,
+                
+        },
+        11:{
+            name: 'Bouncemasters',
+            appToken: 'bc72d3b9-8e91-4884-9c33-f72482f0db37',
+            promoId: 'bc72d3b9-8e91-4884-9c33-f72482f0db37',
+            eventsDelay: 20000,
+            attemptsNumber: 30,
+        },
+        12:{
+            name: 'Hide Ball',
+            appToken: '4bf4966c-4d22-439b-8ff2-dc5ebca1a600',
+            promoId: '4bf4966c-4d22-439b-8ff2-dc5ebca1a600',
+            eventsDelay: 40000,
+            attemptsNumber: 30,
+        },
+        13: {
+            name: 'Pin Out Master',
+            appToken: 'd2378baf-d617-417a-9d99-d685824335f0',
+            promoId: 'd2378baf-d617-417a-9d99-d685824335f0',
+            eventsDelay: 20000, // 30 seconds
+            attemptsNumber: 30,
+        },
+        14: {
+            name: 'Count Masters',
+            appToken: '4bdc17da-2601-449b-948e-f8c7bd376553',
+            promoId: '4bdc17da-2601-449b-948e-f8c7bd376553',
+            eventsDelay: 20000, // 30 seconds
+            attemptsNumber: 30,
+        },
+        15: {
+            name: 'Infected Frontier',
+            appToken: 'eb518c4b-e448-4065-9d33-06f3039f0fcb',
+            promoId: 'eb518c4b-e448-4065-9d33-06f3039f0fcb',
+            eventsDelay: 20000, // 30 seconds
+            attemptsNumber: 30,
+        },
+        16: {
+            name: 'Among Water',
+            appToken: 'daab8f83-8ea2-4ad0-8dd5-d33363129640',
+            promoId: 'daab8f83-8ea2-4ad0-8dd5-d33363129640',
+            eventsDelay: 20000, // 30 seconds
+            attemptsNumber: 30,
+        },
+        17: {
+            name: 'Factory World',
+            appToken: 'd02fc404-8985-4305-87d8-32bd4e66bb16',
+            promoId: 'd02fc404-8985-4305-87d8-32bd4e66bb16',
+            eventsDelay: 20000, // 30 seconds
+            attemptsNumber: 30,
+        }
     };
 
     const startBtn = document.getElementById('startBtn');

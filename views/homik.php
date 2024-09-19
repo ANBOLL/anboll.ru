@@ -17,15 +17,23 @@ include_once("views/header.php");
         <div class="form-group">
             <label id="gameSelectLabel" for="gameSelect">Выбери игру</label>
             <select id="gameSelect">
+                <option value="1">ZooPolis</option>
                 <option value="2">Chain Cube 2048</option>
+                <option value="3">Fluff Crusade (new)</option>
                 <option value="4">Train Miner</option>
-                <option value="5">Merge Away</option>
+                <option value="5">Merge Away </option>
                 <option value="6">Twerk Race</option>
                 <option value="7">Polysphere</option>
                 <option value="8">Mow and Trim</option>
-                <option value="3">Fluff Crusade (new)</option>
-                <option value="1">ZooPolis </option>
-                <option value="9">Tile Trio (new)</option>
+                <option value="9">Tile Trio </option>
+                <option value="10">Stone Age </option>
+                <option value="11">Bouncemasters </option>
+                <option value="12">Hide Ball </option>
+                <option value="13">Pin Out Master </option>
+                <option value="14">Count Masters </option>
+                <option value="15">Infected Frontier (NEW) </option>
+                <option value="16">Among Water (NEW) </option>
+                <option value="17">Factory World (NEW) </option>
             </select>
         </div>
         
