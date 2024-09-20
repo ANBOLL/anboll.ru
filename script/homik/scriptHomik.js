@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
             eventsDelay: 21000,
             attemptsNumber: 17,
-                
         },
         9: {
             name: 'Tile Trio',
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
             eventsDelay: 20000,
             attemptsNumber: 22,
-                
         },
         10: {
             name: 'Stone Age',
@@ -76,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
             eventsDelay: 22000,
             attemptsNumber: 25,
-                
         },
         11:{
             name: 'Bouncemasters',
@@ -418,33 +415,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => {
             console.error('Could not copy text: ', err);
         });
-    });
-
-    document.getElementById('ShowKeysBtn').addEventListener('click', () => {
-        const generatedCodesContainer = document.getElementById('generatedCodesContainer');
-        const generatedCodesList = document.getElementById('generatedCodesList');
-        generatedCodesList.innerHTML = ''; // Clear the list
-
-        let codesGeneratedToday = [];
-
-        Object.keys(games).forEach(key => {
-            const game = games[key];
-            const storageKey = `keys_generated_${game.name}`;
-            const storedData = JSON.parse(localStorage.getItem(storageKey));
-
-            if (storedData && storedData.keys && storedData.keys.length > 0) {
-                codesGeneratedToday = codesGeneratedToday.concat(storedData.keys.map(code => {
-                    return `<li>${game.name}: ${code}</li>`;
-                }));
-            }
-        });
-
-        if (codesGeneratedToday.length > 0) {
-            generatedCodesList.innerHTML = codesGeneratedToday.join('');
-        } else {
-            generatedCodesList.innerHTML = '<li>Не сегодня, сори.</li>';
-        }
-
-        generatedCodesContainer.style.display = 'block';
     });
 });
